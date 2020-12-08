@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 class Counter extends Component {
-    state = {result: 0};
+    state = {result: 0, input: 0};
 
     plus1 = () => {
         let {result} = this.state;
@@ -11,8 +11,8 @@ class Counter extends Component {
 
     minus1 = () => {
         let {result} = this.state;
-        let away1 = result - 1;
-        this.setState({result: away1});
+        let subtract1 = result - 1;
+        this.setState({result: subtract1});
     };
 
     plus100 = () => {
@@ -23,24 +23,28 @@ class Counter extends Component {
 
     minus100 = () => {
         let {result} = this.state;
-        let away100 = result - 100;
-        this.setState({result: away100});
+        let subtract100 = result - 100;
+        this.setState({result: subtract100});
     };
 
     reset = () => {this.setState({result: 0})};
 
-    enterInput = (e) => { //   сделать его контролируемым
-        console.log(e.target.valueAsNumber);
+    enterInput = (event) => {
+        let inputValue = event.target.valueAsNumber;
+        this.setState({input: inputValue});
     }
 
-    submitNumber = (event) => {
-        let {result} = this.state;
-        console.log(event.target);
-        let actNumber = result + event.target.previousSibling.valueAsNumber;
-        console.log(actNumber);
-        this.setState({result: actNumber})
-    }
+    // submitNumber = (event) => {          // работает без функции, налаживаемой на инпут enterInput - напрямую вызывает значение элемента рядом
+    //     let {result} = this.state;
+    //     let actNumber = result + event.target.previousSibling.valueAsNumber;
+    //     this.setState({result: actNumber});
+    // }
 
+    submitNumber = () => {
+        let {input, result} = this.state;
+        let RESULT = result + input;
+        this.setState({result: RESULT})
+    }
 
     render() {
         let {result} = this.state;
