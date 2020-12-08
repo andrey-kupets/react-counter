@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Counter.css';
 
 class Counter extends Component {
     state = {result: 0, input: 0};
@@ -40,7 +41,7 @@ class Counter extends Component {
     //     this.setState({result: actNumber});
     // }
 
-    submitNumber = () => {
+    submitNumber = (enterInput) => {
         let {input, result} = this.state;
         let RESULT = result + input;
         this.setState({result: RESULT})
@@ -49,21 +50,19 @@ class Counter extends Component {
     render() {
         let {result} = this.state;
         return (
-            <div className={'Wrapper'}>
-                <div>Counter
-                    <div>{result}</div>
-                    <div>
-                        <button onClick={this.plus1}>+1</button>
-                        <button onClick={this.minus1}>-1</button>
-                        <button onClick={this.plus100}>+100</button>
-                        <button onClick={this.minus100}>-100</button>
-                        <button onClick={this.reset}>reset</button>
-                    </div>
-                    <div>
-                        <label/>Number
-                        <input type={'number'} onChange={this.enterInput}/>
-                        <button onClick={this.submitNumber}>Submit</button>
-                    </div>
+            <div className={'counter_wrap'}>Counter
+                <div className={'result'}>{result}</div>
+                <div className={'btns'}>
+                    <button onClick={this.plus1} className={'btn'}>+1</button>
+                    <button onClick={this.minus1} className={'btn'}>-1</button>
+                    <button onClick={this.plus100} className={'btn'}>+100</button>
+                    <button onClick={this.minus100} className={'btn'}>-100</button>
+                    <button onClick={this.reset} className={'btn_reset'}>reset</button>
+                </div><hr/>
+                <div className={'input_area'}>
+                    <label/>Number
+                    <input type={'number'} onChange={this.enterInput} className={'input'}/>
+                    <button onClick={this.submitNumber} className={'btn'}>Submit</button>
                 </div>
             </div>
         );
