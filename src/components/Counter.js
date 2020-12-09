@@ -4,28 +4,10 @@ import './Counter.css';
 class Counter extends Component {
     state = {result: 0, input: 0};
 
-    plus1 = () => {
+    plus = (n) => {
         let {result} = this.state;
-        let add1 = result + 1;
+        let add1 = result + n;
         this.setState({result: add1});
-    };
-
-    minus1 = () => {
-        let {result} = this.state;
-        let subtract1 = result - 1;
-        this.setState({result: subtract1});
-    };
-
-    plus100 = () => {
-        let {result} = this.state;
-        let add100 = result + 100;
-        this.setState({result: add100});
-    };
-
-    minus100 = () => {
-        let {result} = this.state;
-        let subtract100 = result - 100;
-        this.setState({result: subtract100});
     };
 
     reset = () => {this.setState({result: 0})};
@@ -51,12 +33,12 @@ class Counter extends Component {
         let {result} = this.state;
         return (
             <div className={'counter_wrap'}>Counter
-                <div className={'result'}>{result}</div>
+                <div className={'result'}>{!(result < 0) && result}</div>
                 <div className={'btns'}>
-                    <button onClick={this.plus1} className={'btn'}>+1</button>
-                    <button onClick={this.minus1} className={'btn'}>-1</button>
-                    <button onClick={this.plus100} className={'btn'}>+100</button>
-                    <button onClick={this.minus100} className={'btn'}>-100</button>
+                    <button onClick={()=>{this.plus(1)}} className={'btn'}>+1</button> {/*or onClick={this.plus.bind(null, 1)}*/}
+                    <button onClick={()=>{this.plus(-1)}} className={'btn'}>-1</button>
+                    <button onClick={()=>{this.plus(100)}} className={'btn'}>+100</button>
+                    <button onClick={()=>{this.plus(-100)}} className={'btn'}>-100</button>
                     <button onClick={this.reset} className={'btn_reset'}>reset</button>
                 </div><hr/>
                 <div className={'input_area'}>
