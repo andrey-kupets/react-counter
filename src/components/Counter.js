@@ -25,15 +25,16 @@ class Counter extends Component {
 
     submitNumber = (enterInput) => {
         let {input, result} = this.state;
-        let RESULT = result + input;
-        this.setState({result: RESULT})
+        let complex = result + input;
+        this.setState({result: complex})
     }
 
     render() {
         let {result} = this.state;
+
         return (
             <div className={'counter_wrap'}>Counter
-                <div className={'result'}>{!(result < 0) && result}</div>
+                <div className={'result'}>{result}</div>
                 <div className={'btns'}>
                     <button onClick={()=>{this.plus(1)}} className={'btn'}>+1</button> {/*or onClick={this.plus.bind(null, 1)}*/}
                     <button onClick={()=>{this.plus(-1)}} className={'btn'}>-1</button>
