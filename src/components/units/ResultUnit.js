@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
 
 
-class ResultUnit extends Component {
-    render() {
-        let {divResult} = this.props;
+function ResultUnit({divResult}) {
         return (
-            <div>
                 <div className={'result'}>{divResult}</div>
-            </div>
+
         );
-    }
 }
 
 export default ResultUnit;
