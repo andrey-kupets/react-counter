@@ -5,13 +5,26 @@ class Counter extends Component {
     state = {result: 0, input: 0};
 
     plus = (n) => {
-        let {result} = this.state;
-        let add1 = result + n;
-        if (n < -result) {
-            this.setState({result: 0});
-        }else {
-            this.setState({result: add1});
-        }
+        // let {result} = this.state;
+        // let add1 = result + n;
+        // if(add1 < 0)
+        // {
+        //     this.setState({result: 0})
+        // }else
+        // {
+
+
+
+        // }
+
+        this.setState(prevState=>{
+
+            let {result} = prevState
+            let add1 = result + n;
+
+            return (add1 < 0) ? {result: 0} : {result: add1}
+        })
+
     };
 
     reset = () => {this.setState({result: 0})};
@@ -27,14 +40,9 @@ class Counter extends Component {
     //     this.setState({result: actNumber});
     // }
 
-    submitNumber = (enterInput) => {
-        let {input, result} = this.state;
-        let complex = result + input;
-        if (input < -result) {
-            this.setState({result: 0});
-        }else {
-            this.setState({result: complex})
-        }
+    submitNumber = () => {
+        let {input} = this.state;
+        this.plus(input);
     }
 
     render() {
