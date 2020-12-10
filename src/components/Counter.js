@@ -8,7 +8,7 @@ class Counter extends Component {
     state = {
         result: 0,
         input: 0,
-        myButton: [1,-1,-25, 100]
+        myButton: [1,-1, 100, -100]
     };
 
     plus = (n) => {
