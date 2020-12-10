@@ -12,17 +12,6 @@ class Counter extends Component {
     };
 
     plus = (n) => {
-        // let {result} = this.state;
-        // let add1 = result + n;
-        // if(add1 < 0)
-        // {
-        //     this.setState({result: 0})
-        // }else
-        // {
-
-
-
-        // }
 
         this.setState(prevState=>{
 
@@ -31,6 +20,7 @@ class Counter extends Component {
 
             return (add1 < 0) ? {result: 0} : {result: add1}
         })
+
 
     };
 
@@ -48,6 +38,7 @@ class Counter extends Component {
     // }
 
     submitNumber = () => {
+
         let {input} = this.state;
         this.plus(input);
     }
