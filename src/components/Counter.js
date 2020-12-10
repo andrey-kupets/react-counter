@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import './Counter.css';
 import ButtonsUnit from "./units/ButtonsUnit";
-import InputUnit from "./units/InputUnit";
 import ResultUnit from "./units/ResultUnit";
+import InputArea from "./input-area/InputArea";
 
 class Counter extends Component {
     state = {
         result: 0,
         input: 0,
-        mybutton: [1,-1,-25,100]
+        myButton: [1,-1,-25, 100]
     };
 
     plus = (n) => {
@@ -44,17 +44,13 @@ class Counter extends Component {
     }
 
     render() {
-        let {result,mybutton} = this.state;
+        let {result, myButton} = this.state;
 
         return (
             <div className={'counter_wrap'}>Counter
                 <ResultUnit divResult={result}/>
-                <ButtonsUnit fPlus = {this.plus} fReset={this.reset} mybut={mybutton}/>
-                <div className={'input_area'}>
-                    <label>Number</label>
-                    <InputUnit fInput={this.enterInput}/>
-                    <button onClick={this.submitNumber} className={'btn'}>Submit</button>
-                </div>
+                <ButtonsUnit fPlus = {this.plus} fReset={this.reset} myBtn={myButton}/>
+                   <InputArea fSubmit={this.submitNumber} fInput={this.enterInput}/>
             </div>
         );
     }
