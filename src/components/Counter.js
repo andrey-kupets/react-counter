@@ -5,16 +5,23 @@ import InputUnit from "./units/InputUnit";
 import ResultUnit from "./units/ResultUnit";
 
 class Counter extends Component {
-    state = {result: 0, input: 0};
+    state = {
+        result: 0,
+        input: 0,
+        mybutton: [1,-1,-25,100]
+    };
 
     plus = (n) => {
-        let {result} = this.state;
-        let add1 = result + n;
-        if (add1 < 0) {
-            this.setState({result: 0});
-        }else {
-            this.setState({result: add1});
-        }
+
+        this.setState(prevState=>{
+
+            let {result} = prevState
+            let add1 = result + n;
+
+            return (add1 < 0) ? {result: 0} : {result: add1}
+        })
+
+
     };
 
     reset = () => {this.setState({result: 0})};
@@ -37,12 +44,12 @@ class Counter extends Component {
     }
 
     render() {
-        let {result} = this.state;
+        let {result,mybutton} = this.state;
 
         return (
             <div className={'counter_wrap'}>Counter
                 <ResultUnit divResult={result}/>
-                <ButtonsUnit fPlus = {this.plus} fReset={this.reset}/>
+                <ButtonsUnit fPlus = {this.plus} fReset={this.reset} mybut={mybutton}/>
                 <div className={'input_area'}>
                     <label>Number</label>
                     <InputUnit fInput={this.enterInput}/>
