@@ -7,7 +7,11 @@ class Counter extends Component {
     plus = (n) => {
         let {result} = this.state;
         let add1 = result + n;
-        this.setState({result: add1});
+        if (n < -result) {
+            this.setState({result: 0});
+        }else {
+            this.setState({result: add1});
+        }
     };
 
     reset = () => {this.setState({result: 0})};
@@ -26,7 +30,11 @@ class Counter extends Component {
     submitNumber = (enterInput) => {
         let {input, result} = this.state;
         let complex = result + input;
-        this.setState({result: complex})
+        if (input < -result) {
+            this.setState({result: 0});
+        }else {
+            this.setState({result: complex})
+        }
     }
 
     render() {
@@ -43,7 +51,7 @@ class Counter extends Component {
                     <button onClick={this.reset} className={'btn_reset'}>reset</button>
                 </div><hr/>
                 <div className={'input_area'}>
-                    <label/>Number
+                    <label>Number</label>
                     <input type={'number'} onChange={this.enterInput} className={'input'}/>
                     <button onClick={this.submitNumber} className={'btn'}>Submit</button>
                 </div>
