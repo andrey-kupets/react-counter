@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import './Counter.css';
+import ButtonsUnit from "./units/ButtonsUnit";
+import InputUnit from "./units/InputUnit";
+import ResultUnit from "./units/ResultUnit";
 
 class Counter extends Component {
     state = {result: 0, input: 0};
@@ -50,17 +53,11 @@ class Counter extends Component {
 
         return (
             <div className={'counter_wrap'}>Counter
-                <div className={'result'}>{result}</div>
-                <div className={'btns'}>
-                    <button onClick={()=>{this.plus(1)}} className={'btn'}>+1</button> {/*or onClick={this.plus.bind(null, 1)}*/}
-                    <button onClick={()=>{this.plus(-1)}} className={'btn'}>-1</button>
-                    <button onClick={()=>{this.plus(100)}} className={'btn'}>+100</button>
-                    <button onClick={()=>{this.plus(-100)}} className={'btn'}>-100</button>
-                    <button onClick={this.reset} className={'btn_reset'}>reset</button>
-                </div><hr/>
+                <ResultUnit divResult={result}/>
+                <ButtonsUnit fPlus = {this.plus} fReset={this.reset}/>
                 <div className={'input_area'}>
                     <label>Number</label>
-                    <input type={'number'} onChange={this.enterInput} className={'input'}/>
+                    <InputUnit fInput={this.enterInput}/>
                     <button onClick={this.submitNumber} className={'btn'}>Submit</button>
                 </div>
             </div>
