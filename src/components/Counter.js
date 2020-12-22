@@ -50,7 +50,7 @@ class Counter extends Component {
             <div className={'counter_wrap'}>Counter
                 <ResultUnit divResult={result}/>
                 <ButtonsUnit fPlus = {this.plus} fReset={this.reset} myBtn={myButton}/>
-                   <InputArea fSubmit={this.submitNumber} fInput={this.enterInput}/>
+                <InputArea fSubmit={this.submitNumber} fInput={this.enterInput}/>
             </div>
         );
     }

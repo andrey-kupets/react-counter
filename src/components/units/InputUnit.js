@@ -5,10 +5,8 @@ class InputUnit extends Component {
         let {fInput} = this.props;
 
         return (
-            <div>
                 <input type={'number'} onChange={fInput} className={'input'}/>
-            </div>
-        );
+       );
     }
 }
 
